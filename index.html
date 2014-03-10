@@ -2,11 +2,42 @@
 <html>
 <head><!-- CDN hosted by Cachefly -->
 <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="jquery-2.1.0.min.js"></script>
 <script>
         tinymce.init({selector:'textarea'});
 </script>
+<script>
+	function convert(){
+		var child = $("#mce_0_ifr").contents().find("body").html();
+		var xmlDebut = "<PARTIE>\n<SECTION>\n";
+		var xmlPreferences = "<EAST transition=\"burst\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
+		var xmlLogo = "<LOGO_GAUCHE fichier=\"Logo_evry.svg\" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
+		var xmlPiedPage = "<PIEDPAGE_GAUCHE>Module Multimédia</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>M2 MIAGE APP</PIEDPAGE_DROIT>\n"
+		var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
+		
+		child = child.replace(/<p>/g,"<PARAGRAPHE>");
+		child = child.replace(/<\/p>/g,"</PARAGRAPHE>\n");
+		
+		child = child.replace(/<h1>/g,"<TITRE>");
+		child = child.replace(/<\/h1>/g,"</TITRE>\n");
+		
+		child = child.replace(/<ul>/g,"<LISTE>");
+		child = child.replace(/<\/ul>/g,"</LISTE>\n");
+		
+		child = child.replace(/<li>/g,"<EL>");
+		child = child.replace(/<\/li>/g,"</EL>");
+		
+		xmlComplet = xmlPreferences+xmlLogo+xmlPiedPage+xmlDebut+child+xmlFin;
+		xmlComplet = xmlComplet.replace(/</g,"&lt;");
+		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
+		
+		document.all["xmlContent"].innerHTML = xmlComplet;
+	}
+</script>
 </head>
-<body>
+<body id="base">
         <textarea>Your content here.</textarea>
+		<br/><button onClick="convert()">Convert</button>
+		<pre id="xmlContent"></pre>
 </body>
 </html>
