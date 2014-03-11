@@ -27,6 +27,12 @@
 		child = child.replace(/<li>/g,"<EL>");
 		child = child.replace(/<\/li>/g,"</EL>");
 		
+		// gestion balises img et meta-données image
+		child = child.replace(/<img/g,"<IMAGE");
+		child = child.replace(/src/g,"fichier");
+		child = child.replace(/width/g,"largeur");
+		child = child.replace(/height/g,"hauteur");
+		
 		xmlComplet = xmlPreferences+xmlLogo+xmlPiedPage+xmlDebut+child+xmlFin;
 		xmlComplet = xmlComplet.replace(/</g,"&lt;");
 		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
