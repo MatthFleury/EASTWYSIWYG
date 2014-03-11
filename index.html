@@ -33,6 +33,10 @@
 		child = child.replace(/width/g,"largeur");
 		child = child.replace(/height/g,"hauteur");
 		
+		// gestion sous-titres
+		child = child.replace(/<h2>/g,"<SOUS_TITRE>");
+		child = child.replace(/<\/h2>/g,"</SOUS_TITRE>\n");
+		
 		xmlComplet = xmlPreferences+xmlLogo+xmlPiedPage+xmlDebut+child+xmlFin;
 		xmlComplet = xmlComplet.replace(/</g,"&lt;");
 		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
