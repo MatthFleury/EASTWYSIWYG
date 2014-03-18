@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><!-- CDN hosted by Cachefly -->
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
 <script src="tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="jquery-2.1.0.min.js"></script>
 <script>
@@ -42,12 +43,26 @@
 		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
 		
 		document.all["xmlContent"].innerHTML = xmlComplet;
+		
+		document.getElementById("titre_XML").style.visibility="visible";	
 	}
 </script>
 </head>
 <body id="base">
-        <textarea>Your content here.</textarea>
-		<br/><button onClick="convert()">Convert</button>
-		<pre id="xmlContent"></pre>
+	<section id="wrapper">
+		<header>
+			<h1>EASTWYSIWYG</h1>
+		</header>
+		<article id="wys">
+			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
+			<textarea>Your content here.</textarea>
+			<br/>
+			<button onClick="convert()">Convert</button>
+		</article>
+		<article id="wyg">
+			<h2 id="titre_XML" style="visibility:hidden;">Résultat en XML</h2>
+			<pre id="xmlContent"></pre>
+		</article>
+	</section>
 </body>
 </html>
