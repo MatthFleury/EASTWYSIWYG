@@ -12,8 +12,8 @@
 		var child = $("#mce_0_ifr").contents().find("body").html();
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 		var xmlPreferences = "<EAST transition=\"burst\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
-		var xmlLogo = "<LOGO_GAUCHE fichier=\"Logo_evry.svg\" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
-		var xmlPiedPage = "<PIEDPAGE_GAUCHE>Module Multimédia</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>M2 MIAGE APP</PIEDPAGE_DROIT>\n"
+		var xmlLogo = "<LOGO_GAUCHE fichier="+$("#leftlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/><LOGO_DROIT fichier="+$("#rightlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
+		var xmlPiedPage = "<PIEDPAGE_GAUCHE>"+$("#leftfooter").val()+"</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>"+$("#rightfooter").val()+"</PIEDPAGE_DROIT>\n"
 		var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
 		
 		child = child.replace(/<p>/g,"<PARAGRAPHE>");
@@ -53,6 +53,12 @@
 		<header>
 			<h1>EASTWYSIWYG</h1>
 		</header>
+		<article id="pref">
+			<label for="leftfooter">Pied de page gauche : </label><input type="text" id="leftfooter" value="Module Multimédia"></br>
+			<label for="rightfooter">Pied de page droit : </label><input type="text" id="rightfooter" value="M2 MIAGE APP"></br>
+			<label for="leftlogo">Logo gauche : </label><input type="file" id="leftlogo"></br>
+			<label for="rightlogo">Logo droit : </label><input type="file" id="rightlogo">
+		</article>
 		<article id="wys">
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
 			<textarea>Your content here.</textarea>

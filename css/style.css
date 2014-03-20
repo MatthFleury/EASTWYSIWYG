@@ -35,3 +35,9 @@ h1{
 	margin:auto;
 	width:920px;
 }
+
+label{
+	display: block;
+	width: 150px;
+	float: left;
+}
