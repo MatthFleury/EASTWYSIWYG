@@ -14,12 +14,21 @@
 	function convert(){
 
 		var child = $("#mce_0_ifr").contents().find("body").html();
-		
-		var xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?>";
-		
+
+		var xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?><EAST transition=\"burst\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:noNamespaceSchemaLocation=\"EAST.xsd\">\n";
+
 		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+$("#dateexpo").val()+"</DATE_EXPOSE></PAGE_TITRE>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
-		var xmlPreferences = "<EAST transition=\"burst\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:noNamespaceSchemaLocation=\"EAST.xsd\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
+
+		var xmlPreferences = "<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/>";
+		if($("#comments").val())
+			xmlPreferences += "<COMMENTAIRES display=\""+$("#comments").val()+"\"></COMMENTAIRES>"
+		if($("#print").val())
+			xmlPreferences += "<IMPRESSION display=\""+$("#print").val()+"\"></IMPRESSION>"
+		if($("#buttonbarre").val())
+			xmlPreferences += "<BARRE_BOUTONS display=\""+$("#buttonbarre").val()+"\"></BARRE_BOUTONS>"
+		xmlPreferences += "<PAGE/></PREFERENCES>\n"
+
 		var xmlLogoG = ""
 		var xmlLogoD = ""
 		if($("#leftlogo").val())
@@ -40,6 +49,7 @@
 		
 		child = child.replace(/<li>/g,"<EL>");
 		child = child.replace(/<\/li>/g,"</EL>");
+		child = child.replace(/<br data-mce-bogus="1">/g,"");
 		
 		// gestion balises img et meta-données image
 		child = child.replace(/<img/g,"<IMAGE");
@@ -73,11 +83,17 @@
 			<h1>EASTWYSIWYG</h1>
 		</header>
 		<article id="pref">
-			<h2>Préférences</h2>
+			<h2>Préférences simples</h2>
 			<label for="leftfooter">Pied de page gauche : </label><input type="text" id="leftfooter" value="Module Multimédia"></br>
 			<label for="rightfooter">Pied de page droit : </label><input type="text" id="rightfooter" value="M2 MIAGE APP"></br>
 			<label for="leftlogo">Logo gauche : </label><input type="file" id="leftlogo"></br>
 			<label for="rightlogo">Logo droit : </label><input type="file" id="rightlogo">
+		</article>
+		<article id="pref2">
+			<h2>Préférences avancées</h2>
+			<label for="comments">Commentaires ? : </label><select id="comments"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+			<label for="print">Impression ? : </label><select id="print"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+			<label for="buttonbarre">Barre de bouton ? : </label><select id="buttonbarre"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
 		</article>
 		<article id="titlePage">
 			<h2>Page titre</h2>
