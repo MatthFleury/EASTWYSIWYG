@@ -4,6 +4,7 @@
 <PREFERENCES><PUCE colorpuce="orange" level="1" type="square"/><PUCE colorpuce="green" level="2" type="disc"/><PUCE colorpuce="orange" level="3" type="circle"/><PAGE/></PREFERENCES>
 <LOGO_GAUCHE fichier="Logo_evry.svg" hauteur_SVG="30" largeur_SVG="30"/>
 <PIEDPAGE_GAUCHE>Module Multimédia</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>M2 MIAGE APP</PIEDPAGE_DROIT>
+<PAGE_TITRE><TITRE>Titre</TITRE><SOUS_TITRE>Sous Titre</SOUS_TITRE><AUTEUR>Auteur</AUTEUR></PAGE_TITRE>
 <PARTIE>
 <SECTION>
 <TITRE>Your content here.</TITRE>

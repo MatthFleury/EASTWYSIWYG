@@ -10,6 +10,7 @@
 <script>
 	function convert(){
 		var child = $("#mce_0_ifr").contents().find("body").html();
+		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR></PAGE_TITRE>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 		var xmlPreferences = "<EAST transition=\"burst\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
 		var xmlLogo = "<LOGO_GAUCHE fichier="+$("#leftlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/><LOGO_DROIT fichier="+$("#rightlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
@@ -38,7 +39,7 @@
 		child = child.replace(/<h2>/g,"<SOUS_TITRE>");
 		child = child.replace(/<\/h2>/g,"</SOUS_TITRE>\n");
 		
-		xmlComplet = xmlPreferences+xmlLogo+xmlPiedPage+xmlDebut+child+xmlFin;
+		xmlComplet = xmlPreferences+xmlLogo+xmlPiedPage+xmlTitlePage+xmlDebut+child+xmlFin;
 		xmlComplet = xmlComplet.replace(/</g,"&lt;");
 		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
 		
@@ -54,10 +55,17 @@
 			<h1>EASTWYSIWYG</h1>
 		</header>
 		<article id="pref">
+			<h2>Préférences</h2>
 			<label for="leftfooter">Pied de page gauche : </label><input type="text" id="leftfooter" value="Module Multimédia"></br>
 			<label for="rightfooter">Pied de page droit : </label><input type="text" id="rightfooter" value="M2 MIAGE APP"></br>
 			<label for="leftlogo">Logo gauche : </label><input type="file" id="leftlogo"></br>
 			<label for="rightlogo">Logo droit : </label><input type="file" id="rightlogo">
+		</article>
+		<article id="titlePage">
+			<h2>Page titre</h2>
+			<label for="title">Titre : </label><input type="text" id="title" value="Titre"></br>
+			<label for="subTitle">Sous tire : </label><input type="text" id="subTitle" value="Sous Titre"></br>
+			<label for="author">Auteur : </label><input type="text" id="author" value="Auteur">		
 		</article>
 		<article id="wys">
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
