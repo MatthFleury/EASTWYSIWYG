@@ -50,7 +50,7 @@ label{
 }
 
 #xmlContent{
-	word-wrap: break-word;
+	white-space:pre-wrap;
 }
 
 footer{
