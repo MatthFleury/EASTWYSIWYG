@@ -4,11 +4,10 @@ body{
 
 #wrapper{
 	width:960px;
-	height:960px;
+	min-height:1000px;
 	margin:auto;
 	margin-top:-42px;
 	background-color:white;
-	margin-bottom:20px;
 }
 
 header{
@@ -36,8 +35,22 @@ h1{
 	width:920px;
 }
 
+
 label{
 	display: block;
 	width: 150px;
 	float: left;
+}
+
+#xmlContent{
+	word-wrap: break-word;
+}
+
+footer{
+	width:960px;
+	min-height:50px;
+	margin:auto;
+	background-color:white;
+	margin-bottom:-20px;
+	margin-top:-20px;
 }
