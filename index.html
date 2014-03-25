@@ -12,7 +12,12 @@
 		var child = $("#mce_0_ifr").contents().find("body").html();
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 		var xmlPreferences = "<EAST transition=\"burst\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
-		var xmlLogo = "<LOGO_GAUCHE fichier="+$("#leftlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/><LOGO_DROIT fichier="+$("#rightlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
+		var xmlLogoG = ""
+		var xmlLogoD = ""
+		if($("#leftlogo").val())
+			xmlLogoG = "<LOGO_GAUCHE fichier="+$("#leftlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
+		if($("#rightlogo").val())
+			xmlLogoD = "<LOGO_DROIT fichier="+$("#rightlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
 		var xmlPiedPage = "<PIEDPAGE_GAUCHE>"+$("#leftfooter").val()+"</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>"+$("#rightfooter").val()+"</PIEDPAGE_DROIT>\n"
 		var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
 		
@@ -38,7 +43,7 @@
 		child = child.replace(/<h2>/g,"<SOUS_TITRE>");
 		child = child.replace(/<\/h2>/g,"</SOUS_TITRE>\n");
 		
-		xmlComplet = xmlPreferences+xmlLogo+xmlPiedPage+xmlDebut+child+xmlFin;
+		xmlComplet = xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlDebut+child+xmlFin;
 		xmlComplet = xmlComplet.replace(/</g,"&lt;");
 		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
 		
