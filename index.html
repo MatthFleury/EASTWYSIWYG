@@ -16,7 +16,7 @@
 		var xmlPiedPage = "<PIEDPAGE_GAUCHE>"+$("#leftfooter").val()+"</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>"+$("#rightfooter").val()+"</PIEDPAGE_DROIT>\n"
 		var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
 		
-		child = child.replace(/<p>/g,"<PARAGRAPHE>");
+		child = child.replace(/<p/g,"<PARAGRAPHE");
 		child = child.replace(/<\/p>/g,"</PARAGRAPHE>\n");
 		
 		child = child.replace(/<h1>/g,"<TITRE>");
