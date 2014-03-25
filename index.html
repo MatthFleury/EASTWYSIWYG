@@ -15,14 +15,9 @@
 
 		var child = $("#mce_0_ifr").contents().find("body").html();
 		
-		var xmlHead = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?>";
+		var xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?>";
 		
-		var now = new Date();
-		var day = now.getDate();
-		var month = now.getMonth()+1;
-		var year = now.getFullYear();
-		
-		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+day+"\/"+month+"\/"+year+"</DATE_EXPOSE></PAGE_TITRE>";
+		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+$("#dateexpo").val()+"</DATE_EXPOSE></PAGE_TITRE>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 		var xmlPreferences = "<EAST transition=\"burst\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:noNamespaceSchemaLocation=\"EAST.xsd\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
 		var xmlLogoG = ""
@@ -91,6 +86,7 @@
 			<label for="author">Auteur : </label><input type="text" id="author" value="Auteur"></br>
 			<label for="authormail">E-mail : </label><input type="mail" id="authormail" value="mail@mail.com"></br>
 			<label for="idpres">Identifiant : </label><input type="text" id="idpres" value="Identifiant"></br>
+			<label for="dateexpo">Date de l'exposé : </label><input type="text" id="dateexpo" value="01/01/2000"></br>
 		</article>
 		<article id="wys">
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
