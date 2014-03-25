@@ -10,7 +10,13 @@
 <script>
 	function convert(){
 		var child = $("#mce_0_ifr").contents().find("body").html();
-		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR></PAGE_TITRE>";
+		
+		var now = new Date();
+		var day = now.getDate();
+		var month = now.getMonth()+1;
+		var year = now.getFullYear();
+		
+		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+day+"\/"+month+"\/"+year+"</DATE_EXPOSE></PAGE_TITRE>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 		var xmlPreferences = "<EAST transition=\"burst\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
 		var xmlLogoG = ""
@@ -70,7 +76,9 @@
 			<h2>Page titre</h2>
 			<label for="title">Titre : </label><input type="text" id="title" value="Titre"></br>
 			<label for="subTitle">Sous tire : </label><input type="text" id="subTitle" value="Sous Titre"></br>
-			<label for="author">Auteur : </label><input type="text" id="author" value="Auteur">		
+			<label for="author">Auteur : </label><input type="text" id="author" value="Auteur"></br>
+			<label for="authormail">E-mail : </label><input type="mail" id="authormail" value="mail@mail.com"></br>
+			<label for="idpres">Identifiant : </label><input type="text" id="idpres" value="Identifiant"></br>
 		</article>
 		<article id="wys">
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
