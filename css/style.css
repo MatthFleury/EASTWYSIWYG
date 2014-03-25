@@ -36,11 +36,13 @@ h1{
 }
 
 #pref{
-	padding: 5px;
+	margin:auto;
+	width:920px;
 }
 
 #titlePage{
-	padding: 5px;
+	margin:auto;
+	width:920px;
 }
 
 label{
