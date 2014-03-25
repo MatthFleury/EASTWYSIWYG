@@ -12,7 +12,7 @@
 	var xmlComplet = "";
 	
 	function convert(){
-	
+
 		var child = $("#mce_0_ifr").contents().find("body").html();
 		
 		var xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?>";
@@ -54,10 +54,10 @@
 		xmlComplet = xmlHead+xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlDebut+child+xmlFin;
 		var xmlHtml =  xmlComplet.replace(/</g,"&lt;");
 		xmlHtml = xmlHtml.replace(/>/g,"&gt;");
-		
+
 		document.all["xmlContent"].innerHTML = xmlHtml;
 		
-		document.getElementById("titre_XML").style.visibility="visible";	
+		document.getElementById("titre_XML").style.visibility="visible";
 	}
 	
 	function save(){
@@ -96,8 +96,10 @@
 		</article>
 		<article id="wyg">
 			<h2 id="titre_XML" style="visibility:hidden;">Résultat en XML</h2>
-			<pre id="xmlContent"></pre>
+			<p id="xmlContent"></p>
 		</article>
 	</section>
+	<footer>
+	</footer>
 </body>
 </html>
