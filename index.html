@@ -3,13 +3,19 @@
 <head><!-- CDN hosted by Cachefly -->
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
 <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="FileSaver/FileSaver.js"></script>
 <script src="jquery-2.1.0.min.js"></script>
 <script>
         tinymce.init({selector:'textarea'});
 </script>
 <script>
+	var xmlComplet = "";
+	
 	function convert(){
+	
 		var child = $("#mce_0_ifr").contents().find("body").html();
+		
+		var xmlHead = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?>";
 		
 		var now = new Date();
 		var day = now.getDate();
@@ -18,7 +24,7 @@
 		
 		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+day+"\/"+month+"\/"+year+"</DATE_EXPOSE></PAGE_TITRE>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
-		var xmlPreferences = "<EAST transition=\"burst\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
+		var xmlPreferences = "<EAST transition=\"burst\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:noNamespaceSchemaLocation=\"EAST.xsd\">\n<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/><PAGE/></PREFERENCES>\n";
 		var xmlLogoG = ""
 		var xmlLogoD = ""
 		if($("#leftlogo").val())
@@ -50,13 +56,19 @@
 		child = child.replace(/<h2>/g,"<SOUS_TITRE>");
 		child = child.replace(/<\/h2>/g,"</SOUS_TITRE>\n");
 		
-		xmlComplet = xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlDebut+child+xmlFin;
-		xmlComplet = xmlComplet.replace(/</g,"&lt;");
-		xmlComplet = xmlComplet.replace(/>/g,"&gt;");
+		xmlComplet = xmlHead+xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlDebut+child+xmlFin;
+		var xmlHtml =  xmlComplet.replace(/</g,"&lt;");
+		xmlHtml = xmlHtml.replace(/>/g,"&gt;");
 		
-		document.all["xmlContent"].innerHTML = xmlComplet;
+		document.all["xmlContent"].innerHTML = xmlHtml;
 		
 		document.getElementById("titre_XML").style.visibility="visible";	
+	}
+	
+	function save(){
+		convert();
+		var blob = new Blob([xmlComplet], {type: "text/plain;charset=utf-8"});
+		saveAs(blob, "File.xml");
 	}
 </script>
 </head>
@@ -82,9 +94,9 @@
 		</article>
 		<article id="wys">
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
-			<textarea>Your content here.</textarea>
+			<textarea>Entrez vos données ici.</textarea>
 			<br/>
-			<button onClick="convert()">Convert</button>
+			<button onClick="convert()">Prévisualisez le XML</button><button onClick="save()">Sauvegarder en .xml</button>
 		</article>
 		<article id="wyg">
 			<h2 id="titre_XML" style="visibility:hidden;">Résultat en XML</h2>

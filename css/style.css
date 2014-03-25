@@ -36,6 +36,15 @@ h1{
 	width:920px;
 }
 
+#pref{
+	padding: 5px;
+}
+
+#titlePage{
+	padding: 5px;
+}
+
+
 label{
 	display: block;
 	width: 150px;
