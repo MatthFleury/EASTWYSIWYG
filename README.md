@@ -15,19 +15,16 @@ Ajout des fonctionnalités suivantes :
 
     - Ajout d'un éditeur WYSIWYG
 
-VERSION 0.2
----------------------------
-
-Ajout des fonctionnalités suivantes :
-
-    - Implémenter la transformation en XML
-
 VERSION 1.0
 ---------------------------
 
 Ajout des fonctionnalités suivantes :
 
-    - Implémenter l'export en EAST
+    - Implémenter la transformation en XML
+    - Export du fichier lisible en tant que slideshow EAST
+    - Edition des preferences
+    - Edition des infos de la page titre
+    - Modifications de CSS
 
 VERSION 1.1
 ---------------------------
@@ -35,6 +32,16 @@ VERSION 1.1
 Ajout des fonctionnalités suivantes :
 
     - Ajouter une prévisualisation
+    - Ajouter le support d'autres balises
+    - Ajouter l'édition de la page de conclusion
+
+VERSION 1.2
+---------------------------
+
+Ajout des fonctionnalités suivantes :
+
+    - Permettre l'ajout de pages supplémentaires
+    - Permettre l'ajout de chapitres supplémentaires
 
 VERSION 2.0
 ---------------------------
