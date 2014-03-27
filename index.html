@@ -22,6 +22,38 @@
 
 		var xmlPreferences = "<PREFERENCES>";
 		
+		/* style de la page de titre */
+		if($("#coultxttit").val() || $("#coulfondtit").val()){
+			xmlPreferences += "<TITLE_PAGE ";
+			if($("#coultxttit").val())
+				xmlPreferences += "textcolor=\""+$("#coultxttit").val()+"\" ";
+			if($("#coulfondtit").val())
+				xmlPreferences += "backcolor=\""+$("#coulfondtit").val()+"\" ";
+			xmlPreferences += "/>";
+		}
+		
+		/* style des titres */
+		if($("#coultxttit2").val() || $("#coulfondtit2").val()){
+			xmlPreferences += "<TITLES ";
+			if($("#coultxttit2").val())
+				xmlPreferences += "textcolor=\""+$("#coultxttit2").val()+"\" ";
+			if($("#coulfondtit2").val())
+				xmlPreferences += "backcolor=\""+$("#coulfondtit2").val()+"\" ";
+			xmlPreferences += "/>";
+		}
+		
+		/* style de la page */
+		if($("#coultxt").val() || $("#coulfond").val() || $("#coullien").val()){
+			xmlPreferences += "<PAGE ";
+			if($("#coultxt").val())
+				xmlPreferences += "textcolor=\""+$("#coultxt").val()+"\" ";
+			if($("#coulfond").val())
+				xmlPreferences += "backcolor=\""+$("#coulfond").val()+"\" ";
+			if($("#coullien").val())
+				xmlPreferences += "linkcolor=\""+$("#coullien").val()+"\"";
+			xmlPreferences += "/>";
+		}
+		
 		/* style des puces de niveau 1 */
 		if($("#coulpuc1").val() || $("#stylpuc1").val() || $("#coultxtpuc1").val()){
 			xmlPreferences += "<PUCE level=\"1\" ";
@@ -129,6 +161,149 @@
 				<label for="comments">Commentaires ? : </label><select id="comments"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
 				<label for="print">Impression ? : </label><select id="print"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
 				<label for="buttonbarre">Barre de bouton ? : </label><select id="buttonbarre"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+				<h3>Préférences de la page titre</h3>
+					<label for="coultxttit">Couleur du texte : </label>
+						<select id="coultxttit">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="coulfondtit">Couleur du fond : </label>
+						<select id="coulfondtit">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+				<h3>Préférences de pages</h3>
+					<label for="coultxt">Couleur du texte : </label>
+						<select id="coultxt">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="coulfond">Couleur du fond : </label>
+						<select id="coulfond">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="coullien">Couleur des liens : </label>
+						<select id="coullien">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+				<h3>Préférences des titres</h3>
+					<label for="coultxttit2">Couleur du texte : </label>
+						<select id="coultxttit2">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="coulfondtit2">Couleur du fond : </label>
+						<select id="coulfondtit2">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
 				<h3>Préférences puces 1</h3>
 					<label for="coulpuc1">Couleur des puces : </label>
 						<select id="coulpuc1">
@@ -161,7 +336,7 @@
 							<option value="i">i</option>
 							<option value="I">I</option>
 						</select></br>
-				<label for="coultxtpuc1">Couleur du texte : </label>
+					<label for="coultxtpuc1">Couleur du texte : </label>
 						<select id="coultxtpuc1">
 							<option></option>
 							<option value="aqua" style="background-color:aqua;">aqua</option>
@@ -213,7 +388,7 @@
 							<option value="i">i</option>
 							<option value="I">I</option>
 						</select></br>
-				<label for="coultxtpuc2">Couleur du texte : </label>
+					<label for="coultxtpuc2">Couleur du texte : </label>
 						<select id="coultxtpuc2">
 							<option></option>
 							<option value="aqua" style="background-color:aqua;">aqua</option>
