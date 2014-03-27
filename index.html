@@ -20,7 +20,36 @@
 		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+$("#dateexpo").val()+"</DATE_EXPOSE></PAGE_TITRE>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 
-		var xmlPreferences = "<PREFERENCES><PUCE colorpuce=\"orange\" level=\"1\" type=\"square\"/><PUCE colorpuce=\"green\" level=\"2\" type=\"disc\"/><PUCE colorpuce=\"orange\" level=\"3\" type=\"circle\"/>";
+		var xmlPreferences = "<PREFERENCES>";
+		
+		/* style des puces de niveau 1 */
+		if($("#coulpuc1").val() || $("#stylpuc1").val()){
+			xmlPreferences += "<PUCE level=\"1\" ";
+			if($("#coulpuc1").val())
+				xmlPreferences += "colorpuce=\""+$("#coulpuc1").val()+"\" ";
+			if($("#stylpuc1").val())
+				xmlPreferences += "type=\""+$("#stylpuc1").val()+"\"";
+			xmlPreferences += "/>";
+		}
+		/* style des puces de niveau 2 
+		if($("#coulpuc2").val() || $("#stylpuc2").val()){
+			xmlPreferences += "<PUCE level=\"2\" ";
+			if($("#coulpuc2").val())
+				xmlPreferences += "colorpuce=\""+$("#coulpuc2").val()+"\" ";
+			if($("#stylpuc2").val())
+				xmlPreferences += "type=\""+$("#stylpuc2").val()+"\"";
+			xmlPreferences += "/>";
+		}*/
+		/* style des puces de niveau 3 
+		if($("#coulpuc3").val() || $("#stylpuc3").val()){
+			xmlPreferences += "<PUCE level=\"3\" ";
+			if($("#coulpuc3").val())
+				xmlPreferences += "colorpuce=\""+$("#coulpuc3").val()+"\" ";
+			if($("#stylpuc3").val())
+				xmlPreferences += "type=\""+$("#stylpuc3").val()+"\"";
+			xmlPreferences += "/>";
+		}*/
+		
 		if($("#comments").val())
 			xmlPreferences += "<COMMENTAIRES display=\""+$("#comments").val()+"\"></COMMENTAIRES>"
 		if($("#print").val())
@@ -75,6 +104,10 @@
 		var blob = new Blob([xmlComplet], {type: "text/plain;charset=utf-8"});
 		saveAs(blob, "File.xml");
 	}
+	
+	function refresh() {
+		document.getElementById('frame1').src="File.xml";
+	}
 </script>
 </head>
 <body id="base">
@@ -91,9 +124,105 @@
 		</article>
 		<article id="pref2">
 			<h2>Préférences avancées</h2>
-			<label for="comments">Commentaires ? : </label><select id="comments"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
-			<label for="print">Impression ? : </label><select id="print"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
-			<label for="buttonbarre">Barre de bouton ? : </label><select id="buttonbarre"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+				<label for="comments">Commentaires ? : </label><select id="comments"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+				<label for="print">Impression ? : </label><select id="print"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+				<label for="buttonbarre">Barre de bouton ? : </label><select id="buttonbarre"><option></option><option value="oui">Oui</option><option value="non">Non</option></select></br>
+				<h3>Préférences puces 1</h3>
+					<label for="coulpuc1">Couleur des puces : </label>
+						<select id="coulpuc1">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="stylpuc1">Style des puces : </label>
+						<select id="stylpuc1">
+							<option></option>
+							<option value="square">Carré</option>
+							<option value="disc">Disque</option>
+							<option value="circle">Cercle</option>
+							<option value="A">A</option>
+							<option value="1">1</option>
+							<option value="i">i</option>
+							<option value="I">I</option>
+						</select></br>
+				<!--<h3>Préférences puces 2</h3>
+					<label for="coulpuc2">Couleur des puces : </label>
+						<select id="coulpuc2">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="stylpuc2">Style des puces : </label>
+						<select id="stylpuc2">
+							<option></option>
+							<option value="square">Carré</option>
+							<option value="disc">Disque</option>
+							<option value="circle">Cercle</option>
+							<option value="A">A</option>
+							<option value="1">1</option>
+							<option value="i">i</option>
+							<option value="I">I</option>
+						</select></br>
+				<h3>Préférences puces 3</h3>
+					<label for="coulpuc3">Couleur des puces : </label>
+						<select id="coulpuc3">
+							<option></option>
+							<option value="aqua" style="background-color:aqua;">aqua</option>
+							<option value="black" style="background-color:black;">black</option>
+							<option value="blue" style="background-color:blue;">blue</option>
+							<option value="gray" style="background-color:gray;">gray</option>
+							<option value="green" style="background-color:green;">green</option>
+							<option value="lime" style="background-color:lime;">lime</option>
+							<option value="maroon" style="background-color:maroon;">maroon</option>
+							<option value="navy" style="background-color:navy;">navy</option>
+							<option value="olive" style="background-color:olive;">olive</option>
+							<option value="orange" style="background-color:orange;">orange</option>
+							<option value="purple" style="background-color:purple;">purple</option>
+							<option value="red" style="background-color:red;">red</option>
+							<option value="silver" style="background-color:silver;">silver</option>
+							<option value="teal" style="background-color:teal;">teal</option>
+							<option value="white" style="background-color:white;">white</option>
+							<option value="yellow" style="background-color:yellow;">yellow</option>
+						</select></br>
+					<label for="stylpuc3">Style des puces : </label>
+						<select id="stylpuc3">
+							<option></option>
+							<option value="square">Carré</option>
+							<option value="disc">Disque</option>
+							<option value="circle">Cercle</option>
+							<option value="A">A</option>
+							<option value="1">1</option>
+							<option value="i">i</option>
+							<option value="I">I</option>
+						</select></br> -->
 		</article>
 		<article id="titlePage">
 			<h2>Page titre</h2>
@@ -113,6 +242,10 @@
 		<article id="wyg">
 			<h2 id="titre_XML" style="visibility:hidden;">Résultat en XML</h2>
 			<pre id="xmlContent"></pre>
+		</article>
+		<article id="aframe">
+			<button onClick="refresh()">Rafraichir</button>
+			<iframe id="frame1" src="File.xml"></iframe> 
 		</article>
 	</section>
 	<footer>

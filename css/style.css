@@ -50,6 +50,16 @@ h1{
 	width:920px;
 }
 
+#aframe{
+	margin:auto;
+	width:920px;
+}
+
+#frame1{
+	width:920px;
+	height:480px;
+}
+
 label{
 	display: block;
 	width: 150px;
