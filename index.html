@@ -18,6 +18,7 @@
 		var xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?><EAST transition=\"burst\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:noNamespaceSchemaLocation=\"EAST.xsd\">\n";
 
 		var xmlTitlePage = "<PAGE_TITRE><TITRE>"+$("#title").val()+"</TITRE><SOUS_TITRE>"+$("#subTitle").val()+"</SOUS_TITRE><AUTEUR>"+$("#author").val()+"</AUTEUR><EMAIL>"+$("#authormail").val()+"</EMAIL><IDENTIFIANT>"+$("#idpres").val()+"</IDENTIFIANT><DATE_EXPOSE>"+$("#dateexpo").val()+"</DATE_EXPOSE></PAGE_TITRE>";
+		var xmlConclPage = "<PAGE_CONCLUSION><PARAGRAPHE>"+$("#paraconcl").val()+"</PARAGRAPHE><EMAIL>"+$("#mailConcl").val()+"</EMAIL></PAGE_CONCLUSION>";
 		var xmlDebut = "<PARTIE>\n<SECTION>\n";
 
 		var xmlPreferences = "<PREFERENCES>";
@@ -124,7 +125,7 @@
 		child = child.replace(/<h2>/g,"<SOUS_TITRE>");
 		child = child.replace(/<\/h2>/g,"</SOUS_TITRE>\n");
 		
-		xmlComplet = xmlHead+xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlDebut+child+xmlFin;
+		xmlComplet = xmlHead+xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlConclPage+xmlDebut+child+xmlFin;
 		var xmlHtml =  xmlComplet.replace(/</g,"&lt;");
 		xmlHtml = xmlHtml.replace(/>/g,"&gt;");
 
@@ -465,11 +466,16 @@
 		<article id="titlePage">
 			<h2>Page titre</h2>
 			<label for="title">Titre : </label><input type="text" id="title" value="Titre"></br>
-			<label for="subTitle">Sous tire : </label><input type="text" id="subTitle" value="Sous Titre"></br>
+			<label for="subTitle">Sous titre : </label><input type="text" id="subTitle" value="Sous Titre"></br>
 			<label for="author">Auteur : </label><input type="text" id="author" value="Auteur"></br>
 			<label for="authormail">E-mail : </label><input type="mail" id="authormail" value="mail@mail.com"></br>
 			<label for="idpres">Identifiant : </label><input type="text" id="idpres" value="Identifiant"></br>
 			<label for="dateexpo">Date de l'exposé : </label><input type="text" id="dateexpo" value="01/01/2000"></br>
+		</article>
+		<article id="conclPage">
+			<h2>Page de conclusion</h2>
+			<label for="paraconcl">Paragraphe : </label><input type="text" id="paraconcl" value="En conclusion ..."></br>
+			<label for="mailConcl">Email : </label><input type="mail" id="mailConcl" value="Adresse mail"></br>
 		</article>
 		<article id="wys">
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
