@@ -40,6 +40,22 @@ h1{
 	width:920px;
 }
 
+#prefSimple{
+	display:none;
+}
+
+#prefAdvanced{
+	display:none;
+}
+
+#prefTitlePage{
+	display:none;
+}
+
+#prefConclPage{
+	display:none;
+}
+
 #pref2{
 	margin:auto;
 	width:920px;
