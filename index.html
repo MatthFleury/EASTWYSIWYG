@@ -10,10 +10,21 @@
 </script>
 <script>
 	var xmlComplet = "";
+	var pages = new Array ();
+	var child = "";
+	
+	function nextPage(){
+		convert();
+		if(pages.length == 0)
+			pages[pages.length] = child+"</SECTION>";
+		else
+			pages[pages.length] = "<SECTION>"+child+"</SECTION>";
+		$("#mce_0_ifr").contents().find("body").html('');
+	}
 	
 	function convert(){
 
-		var child = $("#mce_0_ifr").contents().find("body").html();
+		child = $("#mce_0_ifr").contents().find("body").html();
 
 		var xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"EAST.xsl\"?><EAST transition=\"burst\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:noNamespaceSchemaLocation=\"EAST.xsd\">\n";
 
@@ -100,7 +111,10 @@
 		if($("#rightlogo").val())
 			xmlLogoD = "<LOGO_DROIT fichier=\""+$("#rightlogo").val()+"\" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
 		var xmlPiedPage = "<PIEDPAGE_GAUCHE>"+$("#leftfooter").val()+"</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>"+$("#rightfooter").val()+"</PIEDPAGE_DROIT>\n"
-		var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
+		if(pages.length == 0)
+			var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
+		else
+			var xmlFin = "</PARTIE>\n</EAST>";
 		
 		child = child.replace(/<p/g,"<PARAGRAPHE");
 		child = child.replace(/<\/p>/g,"</PARAGRAPHE>\n");
@@ -126,7 +140,17 @@
 		child = child.replace(/<h2>/g,"<SOUS_TITRE>");
 		child = child.replace(/<\/h2>/g,"</SOUS_TITRE>\n");
 		
-		xmlComplet = xmlHead+xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlConclPage+xmlDebut+child+xmlFin;
+		xmlComplet = xmlHead+xmlPreferences+xmlLogoG+xmlLogoD+xmlPiedPage+xmlTitlePage+xmlConclPage+xmlDebut;
+		if(pages.length > 0){
+			for(index = 0;index < pages.length;index++){
+				xmlComplet += pages[index];
+			}
+		} 
+		else
+			xmlComplet += child;
+		
+		xmlComplet += xmlFin;
+		
 		var xmlHtml =  xmlComplet.replace(/</g,"&lt;");
 		xmlHtml = xmlHtml.replace(/>/g,"&gt;");
 
@@ -519,7 +543,7 @@
 			<h2>Entrez les données que vous souhaitez convertir en XML</h2>
 			<textarea>Entrez vos données ici.</textarea>
 			<br/>
-			<button onClick="convert()">Prévisualisez le XML</button><button onClick="save()">Sauvegarder en .xml</button>
+			<button onClick="nextPage()">Page suivante</button><button onClick="convert()">Prévisualisez le XML</button><button onClick="save()">Sauvegarder en .xml</button>
 		</article>
 		<article id="wyg">
 			<h2 id="titre_XML" style="visibility:hidden;">Résultat en XML</h2>
