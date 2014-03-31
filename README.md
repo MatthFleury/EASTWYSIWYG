@@ -35,12 +35,18 @@ Ajout des fonctionnalités suivantes :
     - Ajouter le support d'autres balises
     - Ajouter l'édition de la page de conclusion
 
-VERSION 1.2
+VERSION 1.15
 ---------------------------
 
 Ajout des fonctionnalités suivantes :
 
     - Permettre l'ajout de pages supplémentaires
+
+VERSION 1.2
+---------------------------
+
+Ajout des fonctionnalités suivantes :
+
     - Permettre l'ajout de chapitres supplémentaires
 
 VERSION 2.0
