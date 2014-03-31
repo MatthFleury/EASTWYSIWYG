@@ -40,14 +40,40 @@ h1{
 	width:920px;
 }
 
-#pref2{
-	margin:auto;
-	width:920px;
+#prefSimple{
+	display:none;
+}
+
+#prefAdvanced{
+	display:none;
+}
+
+#prefTitlePage{
+	display:none;
+}
+
+#prefConclPage{
+	display:none;
 }
 
 #titlePage{
 	margin:auto;
 	width:920px;
+}
+
+#conclPage{
+	margin:auto;
+	width:920px;
+}
+
+#aframe{
+	margin:auto;
+	width:920px;
+}
+
+#frame1{
+	width:920px;
+	height:480px;
 }
 
 label{
