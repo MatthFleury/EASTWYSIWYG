@@ -96,9 +96,9 @@
 		var xmlLogoG = ""
 		var xmlLogoD = ""
 		if($("#leftlogo").val())
-			xmlLogoG = "<LOGO_GAUCHE fichier="+$("#leftlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
+			xmlLogoG = "<LOGO_GAUCHE fichier=\""+$("#leftlogo").val()+"\" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
 		if($("#rightlogo").val())
-			xmlLogoD = "<LOGO_DROIT fichier="+$("#rightlogo").val()+" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
+			xmlLogoD = "<LOGO_DROIT fichier=\""+$("#rightlogo").val()+"\" hauteur_SVG=\"30\" largeur_SVG=\"30\"/>\n"
 		var xmlPiedPage = "<PIEDPAGE_GAUCHE>"+$("#leftfooter").val()+"</PIEDPAGE_GAUCHE><PIEDPAGE_DROIT>"+$("#rightfooter").val()+"</PIEDPAGE_DROIT>\n"
 		var xmlFin = "</SECTION>\n</PARTIE>\n</EAST>";
 		
