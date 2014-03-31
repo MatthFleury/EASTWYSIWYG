@@ -114,6 +114,7 @@
 		child = child.replace(/<li>/g,"<EL>");
 		child = child.replace(/<\/li>/g,"</EL>");
 		child = child.replace(/<br data-mce-bogus="1">/g,"");
+		child = child.replace(/<br>/g,"<br\/>");
 		
 		// gestion balises img et meta-données image
 		child = child.replace(/<img/g,"<IMAGE");
